@@ -12,7 +12,7 @@
                 "TaxadeAprovacao": 33.33,
                 "TaxadeAprovacaoLiquida": 35.42,
                 "MargemDeAprovacaoLiquida": 2.08,
-                "periodo": "2018.2"
+                "periodo": "2°"
             },
             "pf": {
                 "nome": "Programação Funcional",
@@ -443,7 +443,7 @@
                 "TaxadeAprovacao": 37.5,
                 "TaxadeAprovacaoLiquida": 42.86,
                 "MargemDeAprovacaoLiquida": 5.36,
-                "periodo": "2019.1"
+                "periodo": "2°"
             },
             "pf": {
                 "nome": "Programação Funcional",
@@ -848,7 +848,7 @@
                 "TaxadeAprovacao": 60.67,
                 "TaxadeAprovacaoLiquida": 64.29,
                 "MargemDeAprovacaoLiquida": 3.61,
-                "periodo": "2019.2"
+                "periodo": "2°"
             },
             "pf": {
                 "nome": "Programação Funcional",
@@ -1291,7 +1291,8 @@
                 "MediaGeral": 2.94,
                 "TaxadeAprovacao": 30.0,
                 "TaxadeAprovacaoLiquida": 33.33,
-                "MargemDeAprovacaoLiquida": 3.33
+                "MargemDeAprovacaoLiquida": 3.33,
+                "periodo": "2°"
             },
             "pf": {
                 "nome": "Programação Funcional",
@@ -1605,7 +1606,8 @@
                 "MediaGeral": 6.37,
                 "TaxadeAprovacao": 66.67,
                 "TaxadeAprovacaoLiquida": 70.27,
-                "MargemDeAprovacaoLiquida": 3.6
+                "MargemDeAprovacaoLiquida": 3.6,
+                "periodo": "2°"
             },
             "pf": {
                 "nome": "Programação Funcional",
@@ -2015,7 +2017,8 @@
                 "MediaGeral": 3.47,
                 "TaxadeAprovacao": 35.71,
                 "TaxadeAprovacaoLiquida": 35.71,
-                "MargemDeAprovacaoLiquida": 0.0
+                "MargemDeAprovacaoLiquida": 0.0,
+                "periodo": "2°"
             },
             "pf": {
                 "nome": "Programação Funcional",
@@ -2389,7 +2392,8 @@
                 "MediaGeral": 4.94,
                 "TaxadeAprovacao": 54.44,
                 "TaxadeAprovacaoLiquida": 57.65,
-                "MargemDeAprovacaoLiquida": 3.2
+                "MargemDeAprovacaoLiquida": 3.2,
+                "periodo": "2°"
             },
             "pf": {
                 "nome": "Programação Funcional",
