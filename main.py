@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from ebooklib import epub
 
 def filtrar_texto(texto):
     # Remover conteúdo antes de "Next" (incluindo "Next")
@@ -25,31 +26,37 @@ def baixar_texto_pagina_web(url):
         print('Ocorreu um erro ao baixar o conteúdo:', e)
         return None
 
-# Lista de números de páginas a serem baixadas
-numeros_paginas = range(1, 4)  # Por exemplo, baixar os dados das páginas 1, 2 e 3
+# Criar um arquivo EPUB
+livro = epub.EpubBook()
 
-for numero_pagina in numeros_paginas:
-    url_pagina_web = f'https://www.ceunovel.com/warlock-of-the-magus-world/chapter-{numero_pagina}'  # Substitua pela URL da página que você deseja baixar o texto
+# Informações do livro
+livro.set_title('Warlock of the Magus World')
+livro.set_language('pt-BR')
+
+# Lista de números de páginas a serem baixadas
+numeros_paginas = range(500, 801)  # Por exemplo, baixar os dados das páginas 1, 2 e 3
+
+total_paginas = len(numeros_paginas)
+for index, numero_pagina in enumerate(numeros_paginas, start=1):
+    url_pagina_web = f'https://www.ceunovel.com/warlock-of-the-magus-world/chapter-{numero_pagina}'
     texto_pagina = baixar_texto_pagina_web(url_pagina_web)
 
     if texto_pagina:
         texto_filtrado = filtrar_texto(texto_pagina)
 
-        # Obtendo o primeiro parágrafo (removendo espaços em branco extras no início e no final)
-        paragrafo_limpo = texto_filtrado.strip().split('\n')[0].strip()
+        # Adicionar o conteúdo filtrado ao arquivo EPUB
+        capitulo = epub.EpubHtml(title=f'Capítulo {numero_pagina}', file_name=f'capitulo-{numero_pagina}.xhtml', lang='pt-BR')
+        capitulo.content = texto_filtrado
+        livro.add_item(capitulo)
 
-        if paragrafo_limpo:
-            # Remover a ocorrência do primeiro parágrafo do texto filtrado
-            texto_filtrado = texto_filtrado.replace(paragrafo_limpo, '', 1).strip()
+    # Exibir a porcentagem de conclusão
+    porcentagem_concluida = (index / total_paginas) * 100
+    print(f'Progresso: {porcentagem_concluida:.2f}%')
 
-            # Adicionar um "-" após cada parágrafo
-            texto_filtrado = '\n- '.join(texto_filtrado.split('\n\n')).strip()
+# Definir a ordem dos capítulos no livro
+livro.spine = ['nav'] + [capitulo for capitulo in livro.get_items()]
 
-            # Salvando o texto filtrado em um arquivo de texto
-            nome_arquivo = f'{numero_pagina} - {paragrafo_limpo}.txt'
-            with open(nome_arquivo, 'w', encoding='utf-8') as arquivo:
-                arquivo.write(texto_filtrado)
+# Salvar o arquivo EPUB
+epub.write_epub('warlock_of_the_magus_world.epub', livro, {})
 
-            print(f'Texto filtrado da página {numero_pagina} salvo em: {nome_arquivo}')
-        else:
-            print(f'A página {numero_pagina} não contém um primeiro parágrafo válido.')
+print('Arquivo EPUB criado com sucesso!')
